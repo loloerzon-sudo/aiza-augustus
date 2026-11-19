@@ -8,8 +8,8 @@
   }
 
   body {
-    background-color: #F7F8F4;
-    color: #383D2D;
+    background-color: #FAF6EF;
+    color: #422D1D;
     font-family: var(--font-sans);
     margin: 0;
     padding: 0;
@@ -29,25 +29,25 @@
   font-family: var(--font-sans);
 }
 
-/* Subtle luxury paper texture */
+/* Subtle luxury parchment texture */
 .paper-card {
-  background-color: #FFFFFF;
-  background-image: radial-gradient(#838769 0.4px, transparent 0.4px);
-  background-size: 20px 20px;
+  background-color: #FFFDF9;
+  background-image: radial-gradient(#A2754E 0.35px, transparent 0.35px);
+  background-size: 22px 22px;
   background-position: 0 0;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar in warm terracotta / wood tones */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F8F4;
+  background: #FAF6EF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C0C4A8;
+  background: #D9BE9B;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #838769;
+  background: #B85D3B;
 }

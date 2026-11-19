@@ -56,32 +56,32 @@ export const AddToCalendar: React.FC = () => {
     <div className="relative inline-block w-full">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-[#838769]/30 bg-white/80 hover:bg-white text-[#4A5438] text-xs font-sans tracking-wider uppercase font-semibold transition-all shadow-xs active:scale-[0.99] cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-[#D2BBA0]/50 bg-[#FFFDF9] hover:bg-white text-[#5C3D24] text-xs font-sans tracking-wider uppercase font-semibold transition-all shadow-xs active:scale-[0.99] cursor-pointer"
       >
-        <Calendar size={15} className="text-[#606C4E]" />
+        <Calendar size={15} className="text-[#B85D3B]" />
         <span>Add to Calendar</span>
-        <ChevronDown size={14} className={`text-[#838769] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown size={14} className={`text-[#8C592C] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 mt-2 py-2 bg-white rounded-xl shadow-lg border border-[#838769]/20 z-30 text-left overflow-hidden">
+        <div className="absolute left-0 right-0 mt-2 py-2 bg-[#FFFDF9] rounded-xl shadow-lg border border-[#D2BBA0]/40 z-30 text-left overflow-hidden">
           <a
             href={googleCalendarUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-4 py-2.5 text-xs text-[#383D2D] hover:bg-[#F4F5EF] transition-colors"
+            className="flex items-center gap-3 px-4 py-2.5 text-xs text-[#422D1D] hover:bg-[#F7F1E7] transition-colors"
           >
             <span className="w-2 h-2 rounded-full bg-[#4285F4]"></span>
             Google Calendar
           </a>
           <button
             onClick={handleDownloadICS}
-            className="w-full flex items-center gap-3 px-4 py-2.5 text-xs text-[#383D2D] hover:bg-[#F4F5EF] transition-colors text-left cursor-pointer"
+            className="w-full flex items-center gap-3 px-4 py-2.5 text-xs text-[#422D1D] hover:bg-[#F7F1E7] transition-colors text-left cursor-pointer"
           >
-            <span className="w-2 h-2 rounded-full bg-[#838769]"></span>
+            <span className="w-2 h-2 rounded-full bg-[#6F7D59]"></span>
             {downloaded ? (
-              <span className="flex items-center gap-1 text-[#4A5438] font-medium">
+              <span className="flex items-center gap-1 text-[#B85D3B] font-medium">
                 <Check size={13} /> Downloaded (.ics)
               </span>
             ) : (

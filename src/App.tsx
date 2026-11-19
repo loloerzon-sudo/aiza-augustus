@@ -10,11 +10,11 @@ export function App() {
   const [stage, setStage] = useState<ViewStage>('envelope');
 
   return (
-    <div className="min-h-screen bg-[#F7F8F4] flex flex-col items-center justify-center relative overflow-x-hidden">
-      {/* Background ambient lighting */}
-      <div className="fixed inset-0 pointer-events-none opacity-40">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#838769]/15 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#C5A880]/15 blur-3xl" />
+    <div className="min-h-screen bg-[#FAF6EF] flex flex-col items-center justify-center relative overflow-x-hidden">
+      {/* Background ambient rustic lighting */}
+      <div className="fixed inset-0 pointer-events-none opacity-50">
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#E09F3E]/12 blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#B85D3B]/10 blur-3xl" />
       </div>
 
       <AnimatePresence mode="wait">
