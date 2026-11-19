@@ -12,18 +12,23 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
   const [flapBack, setFlapBack] = useState(false);
 
   const handleOpen = () => {
-    if (isOpened || opening) return;
+    if (isOpened) return;
+    if (opening) {
+      // If already opening/holding, immediate tap proceeds to full letter card
+      onOpen();
+      return;
+    }
     setOpening(true);
 
-    // At 250ms (when flap passes 90 degrees), switch flap behind the letter
+    // At 280ms (when flap passes 90 degrees), switch flap behind the letter
     setTimeout(() => {
       setFlapBack(true);
     }, 280);
 
-    // After letter slides out completely, transition to full letter view
+    // Hold the open envelope and rising letter for 3.2 seconds so guests can comfortably read
     setTimeout(() => {
       onOpen();
-    }, 1300);
+    }, 3200);
   };
 
   return (
@@ -80,22 +85,22 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
           </svg>
         </motion.div>
 
-        {/* 3. Letter Tucked Inside (z-15, slides up to -170px and elevates in front of flap!) */}
+        {/* 3. Letter Tucked Inside (slides up to -175px and elevates in front of flap!) */}
         <motion.div
           animate={
             opening || isOpened 
-              ? { y: -160, scale: 0.98, zIndex: 25 } 
+              ? { y: -175, scale: 0.98, zIndex: 25 } 
               : { y: 0, scale: 0.92, zIndex: 10 }
           }
           transition={{ 
-            y: { duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] },
-            scale: { duration: 0.8, delay: 0.25 },
+            y: { duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] },
+            scale: { duration: 0.85, delay: 0.25 },
             zIndex: { delay: 0.25 }
           }}
           className="absolute inset-x-4 top-3 bottom-3 bg-[#FAF8F5] rounded-xl shadow-lg border border-[#838769]/30 overflow-hidden flex flex-col items-center text-center"
         >
           {/* Mini preview artwork on the emerging card */}
-          <div className="w-full h-24 overflow-hidden relative bg-[#F2F2EC]">
+          <div className="w-full h-24 overflow-hidden relative bg-[#F2F2EC] shrink-0">
             <img 
               src="/aiza-augustus-artwork.jpg" 
               alt="Artwork preview" 
@@ -111,8 +116,11 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
             <span className="font-script text-2xl sm:text-3xl text-[#4A5438] my-0.5 leading-tight">
               Aiza & Augustus
             </span>
-            <span className="text-[10px] text-[#7D8469] font-serif italic">
+            <span className="text-[10px] text-[#4A5438] font-serif font-semibold">
               Saturday · 27 February 2027
+            </span>
+            <span className="text-[9px] text-[#7D8469] font-sans mt-0.5">
+              Viridis Countryside Garden · Amadeo, Cavite
             </span>
           </div>
         </motion.div>
@@ -156,18 +164,29 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
 
       </div>
 
-      {/* Action Button */}
+      {/* Action Button with Status Hint */}
       <motion.button
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
         onClick={handleOpen}
-        disabled={opening || isOpened}
+        disabled={isOpened}
         className="mt-8 py-3.5 px-8 rounded-full bg-[#4A5438] hover:bg-[#3D452E] text-[#FAF8F5] text-xs font-sans tracking-[0.25em] uppercase font-bold shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2 group"
       >
         <Sparkles size={15} className="text-[#C5A880] group-hover:rotate-12 transition-transform" />
-        <span>{opening ? 'Opening Letter...' : 'Tap To Open Letter'}</span>
+        <span>{opening ? 'Tap To View Full Invitation →' : 'Tap To Open Letter'}</span>
       </motion.button>
+
+      {/* Subtle indicator during hold */}
+      {opening && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-[11px] text-[#7D8469] mt-2.5 font-sans tracking-wider"
+        >
+          Unfolding invitation details...
+        </motion.p>
+      )}
 
     </div>
   );
