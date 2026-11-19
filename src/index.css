@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-script: "Pinyon Script", cursive;
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #F7F8F4;
+    color: #383D2D;
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Subtle luxury paper texture */
+.paper-card {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(#838769 0.4px, transparent 0.4px);
+  background-size: 20px 20px;
+  background-position: 0 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F8F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C0C4A8;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #838769;
+}
