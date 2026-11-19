@@ -7,7 +7,7 @@ import { LetterCard } from './components/LetterCard';
 type ViewStage = 'intro' | 'envelope' | 'letter';
 
 export function App() {
-  const [stage, setStage] = useState<ViewStage>('intro');
+  const [stage, setStage] = useState<ViewStage>('envelope');
 
   return (
     <div className="min-h-screen bg-[#F7F8F4] flex flex-col items-center justify-center relative overflow-x-hidden">

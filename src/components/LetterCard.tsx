@@ -56,22 +56,43 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
         {/* Letter Content Section */}
         <div className="px-6 sm:px-8 pt-2 pb-8 text-center">
           
-          {/* Couple's Names in Romance Script */}
-          <div className="mb-2">
+          {/* Couple's Names in Romance Script with Choreography */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mb-2"
+          >
             <h1 className="font-script text-5xl sm:text-6xl text-[#4A5438] leading-tight">
               Aiza & Augustus
             </h1>
-            <p className="font-serif italic text-sm text-[#7D8469] mt-1">
+            
+            {/* Interlocking Rings */}
+            <div className="flex items-center justify-center gap-2 my-1 text-[#C5A880]">
+              <span className="w-6 h-[1px] bg-[#838769]/25"></span>
+              <svg width="26" height="16" viewBox="0 0 40 26" fill="none" className="text-[#C5A880]">
+                <ellipse cx="15" cy="13" rx="10" ry="10" stroke="currentColor" strokeWidth="2" />
+                <ellipse cx="25" cy="13" rx="10" ry="10" stroke="currentColor" strokeWidth="2" strokeDasharray="50" strokeDashoffset="12" />
+              </svg>
+              <span className="w-6 h-[1px] bg-[#838769]/25"></span>
+            </div>
+
+            <p className="font-serif italic text-sm text-[#7D8469]">
               are getting married
             </p>
-          </div>
+          </motion.div>
 
           <div className="w-16 h-[1px] bg-[#838769]/30 mx-auto my-4" />
 
           {/* Emotional Invitation Message */}
-          <p className="font-serif text-base sm:text-lg text-[#383D2D] leading-relaxed max-w-md mx-auto italic px-2">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="font-serif text-base sm:text-lg text-[#383D2D] leading-relaxed max-w-md mx-auto italic px-2"
+          >
             &ldquo;With full hearts and so much joy, we invite you to save this special date as we celebrate our love and begin a beautiful new chapter together.&rdquo;
-          </p>
+          </motion.p>
 
           {/* Date & Day Highlight */}
           <div className="my-6 py-4 px-3 bg-[#F4F5EF] rounded-2xl border border-[#838769]/20">
