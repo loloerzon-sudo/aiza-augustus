@@ -29,14 +29,11 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
         transition={{ duration: 0.8 }}
         className="text-center mb-6"
       >
-        <p className="text-xs uppercase tracking-[0.35em] text-[#606C4E] font-serif font-semibold">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#606C4E] font-serif font-semibold">
           You Are Cordially Invited
         </p>
-        <h2 className="font-script text-5xl sm:text-6xl text-[#4A5438] mt-1 drop-shadow-xs">
-          Aiza & Augustus
-        </h2>
-        <p className="text-xs text-[#7D8469] tracking-[0.2em] uppercase mt-1 font-sans">
-          February 27, 2027 · Cavite, Philippines
+        <p className="text-xs text-[#7D8469] tracking-[0.25em] uppercase mt-1.5 font-sans">
+          Save The Date
         </p>
       </motion.div>
 
