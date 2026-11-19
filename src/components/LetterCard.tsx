@@ -4,6 +4,7 @@ import { MapPin, Users, Ban, Lock, ExternalLink, Sparkles, RefreshCw } from 'luc
 import confetti from 'canvas-confetti';
 import { CountdownTimer } from './CountdownTimer';
 import { AddToCalendar } from './AddToCalendar';
+import artworkImage from '../assets/aiza-augustus-artwork.png';
 
 interface LetterCardProps {
   onReplayIntro: () => void;
@@ -39,7 +40,7 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
         {/* Watercolor Illustration Artwork Banner (Rustic Countryside) */}
         <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] overflow-hidden bg-[#F7F0E6]">
           <img
-            src="/aiza-augustus-artwork.png"
+            src={artworkImage}
             alt="Aiza & Augustus Rustic Countryside Wedding Artwork"
             className="w-full h-full object-cover object-center filter saturate-[1.03]"
             loading="eager"

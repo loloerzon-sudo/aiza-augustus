@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Heart } from 'lucide-react';
+import artworkImage from '../assets/aiza-augustus-artwork.png';
 
 interface EnvelopeProps {
   onOpen: () => void;
@@ -102,7 +103,7 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
           {/* Mini preview artwork on the emerging card */}
           <div className="w-full h-24 overflow-hidden relative bg-[#F7F0E6] shrink-0">
             <img 
-              src="/aiza-augustus-artwork.png" 
+              src={artworkImage} 
               alt="Rustic Countryside Artwork" 
               className="w-full h-full object-cover object-top opacity-95"
             />
