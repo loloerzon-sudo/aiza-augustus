@@ -37,19 +37,19 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
         {/* Top Decorative Border in Terracotta & Golden Brown */}
         <div className="h-2 w-full bg-gradient-to-r from-[#B85D3B]/40 via-[#8C592C] to-[#E09F3E]/40" />
 
-        {/* Watercolor Illustration Artwork Banner (Rustic Countryside) */}
+        {/* Watercolor Illustration Artwork Banner with MotionSites Settle Zoom */}
         <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] overflow-hidden bg-[#F7F0E6]">
           <img
             src={artworkImage}
             alt="Aiza & Augustus Rustic Countryside Wedding Artwork"
-            className="w-full h-full object-cover object-center filter saturate-[1.03]"
+            className="w-full h-full object-cover object-center filter saturate-[1.03] in-settle-zoom will-change-transform"
             loading="eager"
           />
           {/* Subtle gradient overlay to blend into the card */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9] via-transparent to-transparent opacity-95" />
           
-          <div className="absolute top-4 right-4 bg-[#FFFDF9]/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[#D2BBA0]/40 shadow-xs flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-[#8C592C] font-semibold">
-            <Sparkles size={11} className="text-[#E09F3E]" />
+          <div className="absolute top-4 right-4 liquid-glass-warm px-3.5 py-1.5 rounded-full shadow-xs flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-[#8C592C] font-semibold">
+            <Sparkles size={11} className="text-[#E09F3E] animate-pulse" />
             <span>Save The Date</span>
           </div>
         </div>
@@ -57,14 +57,14 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
         {/* Letter Content Section */}
         <div className="px-6 sm:px-8 pt-2 pb-8 text-center">
           
-          {/* Couple's Names in Romance Script with Choreography */}
+          {/* Couple's Names in Romance Script with MotionSites Blur-Rise & Fluid Clamp */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             className="mb-2"
           >
-            <h1 className="font-script text-5xl sm:text-6xl text-[#5C3D24] leading-tight">
+            <h1 className="fluid-script-display in-blur-rise text-[#5C3D24] tracking-wide my-1">
               Aiza & Augustus
             </h1>
             
@@ -95,8 +95,8 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
             &ldquo;With full hearts and so much joy, we invite you to save this special date as we celebrate our love and begin a beautiful new chapter together.&rdquo;
           </motion.p>
 
-          {/* Date & Day Highlight in Warm Terracotta & Golden Wood */}
-          <div className="my-6 py-4 px-3 bg-[#F7F1E7] rounded-2xl border border-[#D2BBA0]/45">
+          {/* Date & Day Highlight with MotionSites Liquid Glass Finish */}
+          <div className="my-6 py-4 px-4 rounded-2xl liquid-glass-warm shadow-xs">
             <p className="text-xs uppercase tracking-[0.25em] text-[#B85D3B] font-medium mb-1">
               Save The Date
             </p>
@@ -141,8 +141,8 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
 
             <div className="space-y-2.5">
               {/* Note 1: Adults Only */}
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F7F1E7]/60 border border-[#D2BBA0]/30">
-                <div className="p-1.5 rounded-lg bg-white/90 text-[#B85D3B] shrink-0 mt-0.5 shadow-2xs">
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF5ED]/80 backdrop-blur-xs border border-[#D2BBA0]/40 hover:border-[#B85D3B]/40 transition-colors shadow-2xs">
+                <div className="p-1.5 rounded-lg bg-white/90 text-[#B85D3B] shrink-0 mt-0.5 shadow-xs">
                   <Ban size={15} />
                 </div>
                 <div>
@@ -156,8 +156,8 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
               </div>
 
               {/* Note 2: Plus-One Policy */}
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F7F1E7]/60 border border-[#D2BBA0]/30">
-                <div className="p-1.5 rounded-lg bg-white/90 text-[#8C592C] shrink-0 mt-0.5 shadow-2xs">
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF5ED]/80 backdrop-blur-xs border border-[#D2BBA0]/40 hover:border-[#8C592C]/40 transition-colors shadow-2xs">
+                <div className="p-1.5 rounded-lg bg-white/90 text-[#8C592C] shrink-0 mt-0.5 shadow-xs">
                   <Users size={15} />
                 </div>
                 <div>
@@ -171,8 +171,8 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
               </div>
 
               {/* Note 3: Personal Invitation */}
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F7F1E7]/60 border border-[#D2BBA0]/30">
-                <div className="p-1.5 rounded-lg bg-white/90 text-[#6F7D59] shrink-0 mt-0.5 shadow-2xs">
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF5ED]/80 backdrop-blur-xs border border-[#D2BBA0]/40 hover:border-[#6F7D59]/40 transition-colors shadow-2xs">
+                <div className="p-1.5 rounded-lg bg-white/90 text-[#6F7D59] shrink-0 mt-0.5 shadow-xs">
                   <Lock size={15} />
                 </div>
                 <div>
@@ -198,8 +198,10 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleRsvpClick}
-              className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-[#B85D3B] hover:bg-[#9E472A] text-[#FFFDF9] text-xs font-sans tracking-[0.2em] uppercase font-bold shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer"
+              className="w-full relative overflow-hidden flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-[#B85D3B] hover:bg-[#9E472A] text-[#FFFDF9] text-xs font-sans tracking-[0.2em] uppercase font-bold shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
+              {/* MotionSites button hairline shine */}
+              <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
               <span>Confirm Initial RSVP</span>
               <ExternalLink size={14} />
             </a>

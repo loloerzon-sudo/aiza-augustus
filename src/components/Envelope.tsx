@@ -35,19 +35,21 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[90vh] px-4 py-8 select-none">
       
-      {/* Intro prompt above envelope in terracotta & sage */}
+      {/* Intro prompt above envelope with MotionSites Liquid Glass rim */}
       <motion.div
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-center mb-6"
       >
-        <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#B85D3B] font-serif font-semibold">
-          You Are Cordially Invited
-        </p>
-        <p className="text-xs text-[#6F7D59] tracking-[0.25em] uppercase mt-1.5 font-sans font-medium">
-          Save The Date
-        </p>
+        <div className="inline-flex flex-col items-center justify-center px-6 py-2.5 rounded-full liquid-glass-warm shadow-xs">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#B85D3B] font-serif font-semibold">
+            You Are Cordially Invited
+          </p>
+          <p className="text-[10px] text-[#6F7D59] tracking-[0.25em] uppercase mt-1 font-sans font-medium">
+            Save The Date
+          </p>
+        </div>
       </motion.div>
 
       {/* 3D Envelope Container */}
@@ -150,30 +152,34 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
               ? { duration: 0.25 }
               : { duration: 3, repeat: Infinity, ease: 'easeInOut' }
           }
-          className="absolute left-1/2 top-[135px] -translate-x-1/2 -translate-y-1/2 z-40"
+          className="absolute left-1/2 top-[135px] -translate-x-1/2 -translate-y-1/2 z-40 transition-transform duration-300 hover:scale-110 active:scale-95"
         >
-          <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-[#94381C] via-[#C86438] to-[#EFA274] shadow-lg flex items-center justify-center p-1 border-2 border-[#7E2E14]/30">
-            <div className="w-full h-full rounded-full border border-[#6B240F]/30 flex flex-col items-center justify-center text-center shadow-inner bg-gradient-to-br from-[#BD5630] to-[#8C3418]">
-              <span className="font-serif font-bold text-xs sm:text-sm text-[#FFF2E8] tracking-widest leading-none drop-shadow-xs">
+          <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-[#94381C] via-[#C86438] to-[#EFA274] shadow-xl flex items-center justify-center p-1 border-2 border-[#7E2E14]/30 overflow-hidden">
+            <div className="w-full h-full rounded-full border border-[#6B240F]/30 flex flex-col items-center justify-center text-center shadow-inner bg-gradient-to-br from-[#BD5630] to-[#8C3418] relative">
+              <span className="font-serif font-bold text-xs sm:text-sm text-[#FFF2E8] tracking-widest leading-none drop-shadow-xs z-10">
                 A&A
               </span>
-              <Heart size={9} className="text-[#FFF2E8] fill-[#FFF2E8] mt-0.5" />
+              <Heart size={9} className="text-[#FFF2E8] fill-[#FFF2E8] mt-0.5 z-10" />
+              {/* Subtle gold foil radial glimmer */}
+              <div className="absolute inset-0 bg-radial from-[#F5DEB3]/35 via-transparent to-transparent opacity-80 pointer-events-none" />
             </div>
-            <div className="absolute inset-0 rounded-full bg-white/25 blur-xs pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-white/20 blur-xs pointer-events-none" />
           </div>
         </motion.div>
 
       </div>
 
-      {/* Action Button in Terracotta */}
+      {/* Action Button in Terracotta with MotionSites Bevel Shine */}
       <motion.button
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
         onClick={handleOpen}
         disabled={isOpened}
-        className="mt-8 py-3.5 px-8 rounded-full bg-[#B85D3B] hover:bg-[#9E472A] text-[#FFFDF9] text-xs font-sans tracking-[0.25em] uppercase font-bold shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2 group"
+        className="mt-8 py-3.5 px-8 rounded-full bg-[#B85D3B] hover:bg-[#9E472A] text-[#FFFDF9] text-xs font-sans tracking-[0.25em] uppercase font-bold shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-300 cursor-pointer flex items-center gap-2 group relative overflow-hidden"
       >
+        {/* Subtle top bevel highlight shine */}
+        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
         <Sparkles size={15} className="text-[#E09F3E] group-hover:rotate-12 transition-transform" />
         <span>{opening ? 'Tap To View Full Invitation →' : 'Tap To Open Letter'}</span>
       </motion.button>
