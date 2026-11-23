@@ -4,6 +4,8 @@ import { MapPin, Users, Ban, Lock, ExternalLink, Sparkles, RefreshCw } from 'luc
 import confetti from 'canvas-confetti';
 import { CountdownTimer } from './CountdownTimer';
 import { AddToCalendar } from './AddToCalendar';
+import { SpecularGlare } from './SpecularGlare';
+import { useParallax3D } from '../hooks/useParallax3D';
 import artworkImage from '../assets/aiza-augustus-artwork.png';
 
 interface LetterCardProps {
@@ -13,6 +15,20 @@ interface LetterCardProps {
 export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
   const rsvpLink = 'https://forms.gle/i8zzkJ49nSjVE6z76';
   const mapsLink = 'https://maps.google.com/?q=Viridis+Countryside+Garden+Amadeo+Cavite';
+
+  // Gentle 3D Parallax & Specular Glare on the opened letter card
+  const {
+    ref: parallaxRef,
+    rotateX,
+    rotateY,
+    glareX,
+    glareY,
+    glareOpacity,
+    onMouseMove,
+    onMouseLeave,
+  } = useParallax3D({
+    maxTilt: 4.5,
+  });
 
   const handleRsvpClick = () => {
     // Warm Rustic Countryside confetti burst: terracotta, sunflower gold, golden brown, sage, cream
@@ -26,13 +42,26 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
 
   return (
     <motion.div
+      ref={parallaxRef}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       initial={{ opacity: 0, y: 30, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="w-full max-w-lg mx-auto py-6 px-4 sm:px-6"
+      style={{ perspective: 1200 }}
     >
-      {/* Outer Envelope Card Wrapper */}
-      <div className="paper-card rounded-3xl shadow-xl shadow-[#5C3D24]/10 border border-[#D2BBA0]/45 overflow-hidden transition-all duration-300">
+      {/* Outer Envelope Card Wrapper with 3D Parallax Tilt */}
+      <motion.div
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d',
+        }}
+        className="paper-card relative rounded-3xl shadow-xl shadow-[#5C3D24]/10 border border-[#D2BBA0]/45 overflow-hidden transition-shadow duration-300"
+      >
+        {/* Specular Paper Glare */}
+        <SpecularGlare glareX={glareX} glareY={glareY} glareOpacity={glareOpacity} borderRadius="1.5rem" />
         
         {/* Top Decorative Border in Terracotta & Golden Brown */}
         <div className="h-2 w-full bg-gradient-to-r from-[#B85D3B]/40 via-[#8C592C] to-[#E09F3E]/40" />
@@ -48,7 +77,10 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
           {/* Subtle gradient overlay to blend into the card */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9] via-transparent to-transparent opacity-95" />
           
-          <div className="absolute top-4 right-4 liquid-glass-warm px-3.5 py-1.5 rounded-full shadow-xs flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-[#8C592C] font-semibold">
+          <div 
+            style={{ transform: 'translateZ(14px)' }}
+            className="absolute top-4 right-4 liquid-glass-warm px-3.5 py-1.5 rounded-full shadow-xs flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-[#8C592C] font-semibold"
+          >
             <Sparkles size={11} className="text-[#E09F3E] animate-pulse" />
             <span>Save The Date</span>
           </div>
@@ -62,6 +94,7 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
+            style={{ transform: 'translateZ(16px)' }}
             className="mb-2"
           >
             <h1 className="fluid-script-display in-blur-rise text-[#5C3D24] tracking-wide my-1">
@@ -231,7 +264,7 @@ export const LetterCard: React.FC<LetterCardProps> = ({ onReplayIntro }) => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
 
       {/* Discreet footer */}
       <footer className="text-center mt-6 text-[10px] text-[#8C745E]/80 tracking-wider uppercase font-sans">
