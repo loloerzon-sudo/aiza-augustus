@@ -164,7 +164,7 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
 
           {/* 4. Envelope Front Pocket (Parchment kraft folds, mid z-plane) */}
           <div 
-            style={{ transform: 'translateZ(16px)' }}
+            style={{ transform: 'translateZ(10px)' }}
             className="absolute inset-0 pointer-events-none z-20"
           >
             <svg className="w-full h-full" viewBox="0 0 440 290" preserveAspectRatio="none">
@@ -177,33 +177,40 @@ export const Envelope: React.FC<EnvelopeProps> = ({ onOpen, isOpened }) => {
             </svg>
           </div>
 
-          {/* 5. Terracotta & Gold Wax Seal (at translateZ(36px) foreground pop!) */}
-          <motion.div
-            animate={
-              opening || isOpened
-                ? { scale: 0, opacity: 0 }
-                : { scale: [1, 1.04, 1], opacity: 1 }
-            }
-            transition={
-              opening || isOpened
-                ? { duration: 0.25 }
-                : { duration: 3, repeat: Infinity, ease: 'easeInOut' }
-            }
-            style={{ transform: 'translateZ(36px)' }}
-            className="absolute left-1/2 top-[135px] -translate-x-1/2 -translate-y-1/2 z-40 transition-transform duration-300 hover:scale-110 active:scale-95"
+          {/* 5. Terracotta & Gold Wax Seal (guaranteed foreground z-elevation) */}
+          <div
+            style={{ 
+              transform: 'translate3d(-50%, -50%, 45px)',
+              transformStyle: 'preserve-3d',
+            }}
+            className="absolute left-1/2 top-[135px] z-50 pointer-events-auto"
           >
-            <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-[#94381C] via-[#C86438] to-[#EFA274] shadow-xl flex items-center justify-center p-1 border-2 border-[#7E2E14]/30 overflow-hidden">
-              <div className="w-full h-full rounded-full border border-[#6B240F]/30 flex flex-col items-center justify-center text-center shadow-inner bg-gradient-to-br from-[#BD5630] to-[#8C3418] relative">
-                <span className="font-serif font-bold text-xs sm:text-sm text-[#FFF2E8] tracking-widest leading-none drop-shadow-xs z-10">
-                  A&A
-                </span>
-                <Heart size={9} className="text-[#FFF2E8] fill-[#FFF2E8] mt-0.5 z-10" />
-                {/* Subtle gold foil radial glimmer */}
-                <div className="absolute inset-0 bg-radial from-[#F5DEB3]/35 via-transparent to-transparent opacity-80 pointer-events-none" />
+            <motion.div
+              animate={
+                opening || isOpened
+                  ? { scale: 0, opacity: 0 }
+                  : { scale: [1, 1.04, 1], opacity: 1 }
+              }
+              transition={
+                opening || isOpened
+                  ? { duration: 0.25 }
+                  : { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+              }
+              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-200"
+            >
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-[#94381C] via-[#C86438] to-[#EFA274] shadow-2xl flex items-center justify-center p-1 border-2 border-[#7E2E14]/30 overflow-hidden">
+                <div className="w-full h-full rounded-full border border-[#6B240F]/30 flex flex-col items-center justify-center text-center shadow-inner bg-gradient-to-br from-[#BD5630] to-[#8C3418] relative">
+                  <span className="font-serif font-bold text-xs sm:text-sm text-[#FFF2E8] tracking-widest leading-none drop-shadow-xs z-10">
+                    A&A
+                  </span>
+                  <Heart size={9} className="text-[#FFF2E8] fill-[#FFF2E8] mt-0.5 z-10" />
+                  {/* Subtle gold foil radial glimmer */}
+                  <div className="absolute inset-0 bg-radial from-[#F5DEB3]/35 via-transparent to-transparent opacity-80 pointer-events-none" />
+                </div>
+                <div className="absolute inset-0 rounded-full bg-white/20 blur-xs pointer-events-none" />
               </div>
-              <div className="absolute inset-0 rounded-full bg-white/20 blur-xs pointer-events-none" />
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
         </motion.div>
       </div>
